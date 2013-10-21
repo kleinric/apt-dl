@@ -1,0 +1,16 @@
+# Debian apt-dl(8) completion                             -*- shell-script -*-
+# Richard Klein
+# Autocompletion for apt-dl based entirely on the apt-get completion script in Ubuntu 13.10
+
+_apt_dl()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    COMPREPLY=( $( apt-cache --no-generate pkgnames "$cur" 2> /dev/null ) )
+
+    return 0
+} &&
+complete -F _apt_dl apt-dl
+
+# ex: ts=4 sw=4 et filetype=sh

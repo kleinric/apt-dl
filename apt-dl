@@ -1,0 +1,6 @@
+#!/bin/bash
+# Richard Klein
+# Download files for apt-get to install.
+cd /var/cache/apt/archives/
+wget -N `yes | apt-get install $@ --print-uris | grep 'http://' | sed "s/.*'\(.*\)' .*/\1/g" `
+
